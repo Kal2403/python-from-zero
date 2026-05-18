@@ -1,0 +1,25 @@
+# introduction to python
+
+print("Hello World!") # print Hello World to the console
+
+print(2 + 3)    # addition(+)
+print(3 - 2)    # subtraction(-)
+print(2 * 3)    # multiplication(*)
+print(5 + 2)    # addition(+)
+print(5 - 2)    # subtraction(-)
+print(5 * 2)    # multiplication(*)
+print(3 / 2)    # division(/)
+print(3 ** 2)   # exponential(**)
+print(3 % 2)    # modulo(%)
+print(3 // 2)   # floor division(//)
+
+# Data types
+
+print(type(10))                    # Int
+print(type(3.14))                  # Float
+print(type(1 + 3j))                # Complex
+print(type('KalTech'))             # String
+print(type([1, 2, 3]))             # List
+print(type({'name': 'KalTech'}))   # Dictionary
+print(type({9.8, 3.14, 2.7}))      # Set
+print(type((1, 2, 3)))             # Tuple
