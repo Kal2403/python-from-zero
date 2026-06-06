@@ -157,10 +157,94 @@ def sum_of_even(number):
 # Exercises level 2
 
 # 1. Call your function factorial, it takes a whole number as a parameter and it return a factorial of the number
+
+def factorial(number):
+    total_factorial = 1
+    for num in range(1, number + 1):
+        total_factorial *= num
+    return total_factorial
+print(f'El factorial del un numero es: {factorial(5)}')
+
 # 2. Call your function is_empty, it takes a parameter and it checks if it is empty or not
+
+def is_empty(epty):
+    if not epty:
+        return True
+    else:
+        return False
+
 # 3. Write different functions which take lists. They should calculate_mean, calculate_median, calculate_mode, calculate_range, calculate_variance, calculate_std (standard deviation).
+
+from collections import Counter
+import math
+
+def calculate_mean(numbers):
+    return sum(numbers) / len(numbers)
+
+
+def calculate_median(numbers):
+    sorted_numbers = sorted(numbers)
+    n = len(sorted_numbers)
+    mid = n // 2
+
+    if n % 2 == 0:
+        return (sorted_numbers[mid - 1] + sorted_numbers[mid]) / 2
+    else:
+        return sorted_numbers[mid]
+
+
+def calculate_mode(numbers):
+    counts = Counter(numbers)
+    max_count = max(counts.values())
+
+    modes = [num for num, count in counts.items() if count == max_count]
+
+    if len(modes) == len(counts):
+        return None  # No mode
+    return modes
+
+
+def calculate_range(numbers):
+    return max(numbers) - min(numbers)
+
+
+def calculate_variance(numbers):
+    mean = calculate_mean(numbers)
+    return sum((x - mean) ** 2 for x in numbers) / len(numbers)
+
+
+def calculate_std(numbers):
+    variance = calculate_variance(numbers)
+    return math.sqrt(variance)
+
+data = [1, 2, 2, 3, 4, 5]
+
+print("Mean:", calculate_mean(data))
+print("Median:", calculate_median(data))
+print("Mode:", calculate_mode(data))
+print("Range:", calculate_range(data))
+print("Variance:", calculate_variance(data))
+print("Standard Deviation:", calculate_std(data))
+
 # 4. Write a function called greet which takes a default argument, name. If no argument is supplied it should print "Hello, Guest!", otherwise it should greet the person by name.
+
+def greet(name= 'Kal'):
+    if name:
+        return f'Hello, {name}'
+    else:
+        return 'Hello, Guest!'
+    
+print(greet('Kal'))
+print(greet('Jonathan'))
+
 # 5. Create a function called show_args to take an arbitrary number of named arguments and print their names and values. show_args(name="Alice", age=30, city="New York"), show_args(name="Bob", pet="Fluffy, the bunny")
+
+def show_args(**kwarg):
+    for key, value in kwarg.items():
+        print(f'{key}: {value}')
+
+show_args(name='Alice', age=30, city='New York')
+show_args(name='Bob', pet='Fluffy, the bunny')
 
 # Exercises level 3
 
