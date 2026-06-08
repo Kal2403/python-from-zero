@@ -249,12 +249,127 @@ show_args(name='Bob', pet='Fluffy, the bunny')
 # Exercises level 3
 
 # 1. Write a function called is_prime, which checks if a number is prime.
+
+def is_prime(num):
+    if num <= 1:
+        return False
+
+    for i in range(2, num):
+        if num % i == 0:
+            return False
+    
+    return True
+print(is_prime(2))
+print(is_prime(7))
+
 # 2. Write a functions which checks if all items are unique in the list.
+
+def all_unique(items):
+    return len(items) == len(set(items))
+
+print(all_unique([1, 2, 3, 4])) # True
+print(all_unique([1, 2, 2, 4])) # False
+
 # 3. Write a function which checks if all the items of the list are of the same data type.
+
+def same_type(items):
+    first_type = type(items[0])
+    for item in items:
+        if type(item) != first_type:
+            return False
+    
+    return True
+
+print(same_type(["a", "b", "c"]))    # True
+print(same_type([1, "a", 3]))        # False
+
 # 4. Write a function which check if provided variable is a valid python variable
+
+def is_valid(name):
+    return name.isidentifier()
+
 # 5. Go to the data folder and access the countries-data.py file.
+
+countries = [
+    {
+        "name": "China",
+        "population": 1412000000,
+        "languages": ["Chinese"]
+    },
+    {
+        "name": "India",
+        "population": 1428000000,
+        "languages": ["Hindi", "English"]
+    },
+    {
+        "name": "United States",
+        "population": 339000000,
+        "languages": ["English"]
+    },
+    {
+        "name": "Brazil",
+        "population": 216000000,
+        "languages": ["Portuguese"]
+    },
+    {
+        "name": "Nigeria",
+        "population": 223000000,
+        "languages": ["English"]
+    },
+    {
+        "name": "Mexico",
+        "population": 129000000,
+        "languages": ["Spanish"]
+    },
+    {
+        "name": "Germany",
+        "population": 84000000,
+        "languages": ["German"]
+    },
+    {
+        "name": "France",
+        "population": 68000000,
+        "languages": ["French"]
+    },
+    {
+        "name": "Russia",
+        "population": 144000000,
+        "languages": ["Russian"]
+    },
+    {
+        "name": "Spain",
+        "population": 48000000,
+        "languages": ["Spanish"]
+    }
+]
+
 # 6. Create a function called the most_spoken_languages in the world. It should return 10 or 20 most spoken languages in the world in descending order
+
+def most_spoken_languages(countries, top_n):
+    language_count = {}
+
+    for country in countries:
+        for language in country["languages"]:
+            language_count[language] = language_count.get(language, 0) + 1
+    
+    return sorted(
+        language_count.items(),
+        key=lambda x: x[1],
+        reverse=True
+    )[:top_n]
+
+print(most_spoken_languages(countries, 5))
+
 # 7. Create a function called the most_populated_countries. It should return 10 or 20 most populated countries in descending order
+
+def most_populated_countries(countries, top_n):
+    return sorted(
+        countries,
+        key=lambda country: country["population"],
+        reverse=True
+    )[:top_n]
+for country in most_populated_countries(countries, 5):
+    print(country["name"], country["population"])
 
 # Functions in Python
 
