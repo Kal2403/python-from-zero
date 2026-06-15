@@ -1,3 +1,209 @@
+# Exercises
+
+from functools import reduce 
+
+countries_exercises = ['Estonia', 'Finland', 'Sweden', 'Denmark', 'Norway', 'Iceland']
+names_exercises = ['Kal', 'Lidiya', 'Fernando', 'Abraham']
+numbers_exercises = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+# 1. Explain the difference between map, filter, and reduce.
+
+# Map transform every element
+print(list(map(lambda x: x * 2, numbers_exercises)))
+
+# Filter select element by condition
+print(list(filter(lambda x: x % 2 == 0, numbers_exercises)))
+
+# Reduce just reduce by one element
+print(reduce(lambda a, b: a + b, numbers_exercises))
+
+# 2. Explain the difference between higher order function, closure and decorator
+
+# Higher-order function: acept or return a function
+def apply_func(func, value):
+    return func(value)
+
+# Clousure: inner function remembers variables from outer scope
+def multiplier(n):
+    def multiply(x):
+        return x * n
+    return multiply
+
+double = multiplier(2)
+
+# Decorator: modifies or extends another function
+def decorator(func):
+    def wrapper():
+        print("Before function execution")
+        func()
+        print("After function execution")
+    return wrapper
+
+# 3. Define a call function before map, filter or reduce, see examples.
+
+def square(n):
+    return n ** 2
+
+square = list(map(square, numbers_exercises))
+print(square)
+
+# 4. Print each country using a for loop
+
+for country in countries_exercises:
+    print(country)
+
+
+# 5. Print each name using a for loop
+
+for name in names_exercises:
+    print(name)
+
+
+# 6. Print each number using a for loop
+
+for number in numbers_exercises:
+    print(number)
+
+
+# 7. Convert countries to uppercase using map
+
+countries_upper = list(map(str.upper, countries_exercises))
+
+
+# 8. Create a list of squared numbers using map
+
+numbers_squared = list(map(lambda n: n ** 2, numbers_exercises))
+
+
+# 9. Convert names to uppercase using map
+
+names_upper = list(map(str.upper, names_exercises))
+
+
+# 10. Filter countries containing 'land'
+
+countries_with_land = list(
+    filter(lambda country: 'land' in country.lower(), countries_exercises)
+)
+
+
+# 11. Filter countries with exactly six characters
+
+countries_six_chars = list(
+    filter(lambda country: len(country) == 6, countries_exercises)
+)
+
+
+# 12. Filter countries with six or more characters
+
+countries_six_or_more = list(
+    filter(lambda country: len(country) >= 6, countries_exercises)
+)
+
+
+# 13. Filter countries starting with 'E'
+
+countries_starting_e = list(
+    filter(lambda country: country.startswith('E'), countries_exercises)
+)
+
+
+# 14. Chain map, filter and reduce
+
+result = reduce(
+    lambda a, b: a + b,
+    filter(
+        lambda n: n > 10,
+        map(lambda n: n ** 2, numbers_exercises)
+    )
+)
+
+print(result)
+
+
+# 15. Return only string items from a list
+
+def get_string_lists(items):
+    return list(
+        filter(lambda item: isinstance(item, str), items)
+    )
+
+
+# Example
+print(get_string_lists([1, "Kal", True, "Python", 5]))
+
+
+# 16. Sum all numbers using reduce
+
+total = reduce(
+    lambda a, b: a + b,
+    numbers_exercises
+)
+
+print(total)
+
+
+# 17. Concatenate countries into a sentence using reduce
+
+sentence = (
+    reduce(
+        lambda a, b: a + ", " + b,
+        countries_exercises[:-1]
+    )
+    + ", and "
+    + countries_exercises[-1]
+    + " are north European countries"
+)
+
+print(sentence)
+
+
+# 18. Return countries matching a given pattern
+
+def categorize_countries(countries, pattern):
+    return list(
+        filter(
+            lambda country: pattern.lower() in country.lower(),
+            countries
+        )
+    )
+
+
+# Example
+print(categorize_countries(countries_exercises, "land"))
+
+
+# 19. Count countries by starting letter
+
+def count_countries_by_starting_letter(countries):
+    result = {}
+
+    for country in countries:
+        first_letter = country[0]
+
+        if first_letter in result:
+            result[first_letter] += 1
+        else:
+            result[first_letter] = 1
+
+    return result
+
+
+# Example
+print(count_countries_by_starting_letter(countries_exercises))
+
+
+# 20. Return the first ten countries
+
+def get_first_ten_countries(countries):
+    return countries[:10]
+
+
+# 21. Return the last ten countries
+
+def get_last_ten_countries(countries):
+    return countries[-10:]
+
 # Higher order functions
 
 # Function as a parameter
